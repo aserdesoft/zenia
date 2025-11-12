@@ -1,0 +1,14 @@
+
+/* Prevenir desbordamiento horizontal */
+html {
+  overflow-x: hidden;
+  width: 100vw;
+  max-width: 100vw;
+}
+body {
+  overflow-x: hidden;
+  width: 100vw;
+  max-width: 100vw;
+}
+
+

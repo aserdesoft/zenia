@@ -1,0 +1,40 @@
+.home {
+    width: 100%;
+  }
+  
+.services-section {
+padding: 4rem 0;
+background: #f8f9fa;
+content-visibility: auto;
+contain-intrinsic-size: auto 800px;
+}
+
+.container {
+max-width: 1200px;
+margin: 0 auto;
+padding: 0 2rem;
+}
+
+.services-section h2 {
+text-align: center;
+font-size: 2rem;
+margin-bottom: 3rem;
+color: #333;
+}
+
+.services-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: 2rem;
+contain: layout style paint;
+}
+  
+@media (max-width: 768px) {
+    .services-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+}

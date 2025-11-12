@@ -1,0 +1,128 @@
+/* Header/Navbar Styles */
+.navbar-header {
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+  }
+  
+  .navbar {
+    background: transparent;
+    padding: 0.5rem 0;
+    position: relative;
+  }
+  
+  .nav-container {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .nav-logo {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+    margin-right: auto;
+  }
+  
+  .nav-logo-img {
+    height: 60px;
+    width: auto;
+    max-width: 200px;
+    object-fit: contain;
+  }
+  
+  .nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    margin: 0;
+    padding: 0 2rem 0 0;
+    align-items: center;
+  }
+  
+  .nav-menu li {
+    margin: 0;
+  }
+  
+  .nav-link {
+    text-decoration: none;
+    color: #333;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 0.5rem 0;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .nav-link:hover,
+  .nav-link.active {
+    color: #4a90e2;
+  }
+  
+  .nav-link.active::after,
+  .nav-link:hover::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: #4a90e2;
+    border-radius: 2px;
+    opacity: 0.5;
+  }
+  
+  .nav-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: #333;
+    cursor: pointer;
+    padding: 0.5rem;
+    margin-right: 1rem;
+  }
+  
+  /* Mobile Menu */
+  @media (max-width: 768px) {
+    .nav-toggle {
+      display: block;
+    }
+  
+    .nav-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: #ffffff;
+      flex-direction: column;
+      gap: 0;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+  
+    .nav-menu.nav-menu-open {
+      max-height: 400px;
+    }
+  
+    .nav-menu li {
+      width: 100%;
+      border-bottom: 1px solid #f0f0f0;
+    }
+  
+    .nav-link {
+      display: block;
+      padding: 1rem 2rem;
+    }
+  }
+  
