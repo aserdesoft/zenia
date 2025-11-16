@@ -6,12 +6,15 @@ import Documentation from './pages/Documentation'
 import Entertainment from './pages/Entertainment'
 import Funerals from './pages/Funerals'
 import Food from './pages/Food'
+import AboutUs from './pages/AboutUs'
 import Footer from './components/layout/Footer'
+import ScrollToTop from './components/common/ScrollToTop'
 
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="App">
         <Navbar />
         <main>
@@ -22,6 +25,7 @@ function App() {
             <Route path="/documentacion" element={<Documentation />} />
             <Route path="/esparcimiento" element={<Entertainment />} />
             <Route path="/funerales" element={<Funerals />} />
+            <Route path="/sobre-nosotros" element={<AboutUs />} />
           </Routes>
         </main>
         <Footer />
