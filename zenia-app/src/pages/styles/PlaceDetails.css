@@ -1,0 +1,18 @@
+.place-details {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.place-details img {
+  border-radius: 6px;
+  margin: 12px 0;
+}
+
+.place-details .back-button {
+  background: none;
+  border: none;
+  color: #0366d6;
+  cursor: pointer;
+  padding: 8px 0;
+}

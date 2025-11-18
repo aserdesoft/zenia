@@ -7,6 +7,7 @@ import Entertainment from './pages/Entertainment'
 import Funerals from './pages/Funerals'
 import Food from './pages/Food'
 import AboutUs from './pages/AboutUs'
+import PlaceDetails from './pages/PlaceDetails'
 import Footer from './components/layout/Footer'
 import ScrollToTop from './components/common/ScrollToTop'
 
@@ -25,6 +26,8 @@ function App() {
             <Route path="/documentacion" element={<Documentation />} />
             <Route path="/esparcimiento" element={<Entertainment />} />
             <Route path="/funerales" element={<Funerals />} />
+            {/* Ruta de detalles genericos para items en cualquier seccion: /:category/:id */}
+            <Route path="/:category/:id" element={<PlaceDetails />} />
             <Route path="/sobre-nosotros" element={<AboutUs />} />
           </Routes>
         </main>

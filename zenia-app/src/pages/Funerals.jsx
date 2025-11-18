@@ -5,37 +5,15 @@ import Card from '../components/common/Card.jsx';
 import { useDebounce } from '../hooks/useDebounce.js';
 import funeralsImg from '../assets/funeralesGeneric.jpg';
 import './styles/Funerals.css';
+import { useNavigate } from 'react-router-dom';
+import funeralsData from '../data/funeralsData';
 
 function Funerals() {
     const [searchTerm, setSearchTerm] = useState('');
     const [isSearching, setIsSearching] = useState(false);
 
-    const [services] = useState([
-        {
-            id: 1,
-            nombre: 'Funeraria La Paz',
-            direccion: 'Av. Reforma #123, Col. Centro',
-            telefono: '33-1111-0000',
-            horario: '24 horas',
-            servicios: ['Velatorio', 'Traslados', 'Cremación']
-        },
-        {
-            id: 2,
-            nombre: 'Servicios Fúnebres Eternidad',
-            direccion: 'Calle Ocaso #456, Col. Moderna',
-            telefono: '33-2222-3333',
-            horario: '24 horas',
-            servicios: ['Cremación', 'Panteón', 'Ataúdes']
-        },
-        {
-            id: 3,
-            nombre: 'Agencia Memorial',
-            direccion: 'Blvd. Vida #789, Col. Jardines',
-            telefono: '33-4444-5555',
-            horario: 'Lun-Dom 8:00 AM - 10:00 PM',
-            servicios: ['Planes funerarios', 'Velatorio', 'Asesoría']
-        }
-    ]);
+    const [services] = useState(funeralsData);
+    const navigate = useNavigate();
 
     const [filteredServices, setFilteredServices] = useState(services);
     const debouncedSearchTerm = useDebounce(searchTerm, 500);
@@ -93,7 +71,7 @@ function Funerals() {
                             description={`${s.direccion} • ${s.telefono} • ${s.horario}`}
                             image={funeralsImg}
                             onDetailsClick={() => {
-                                alert(`Detalles de ${s.nombre}:\n\nDirección: ${s.direccion}\nTeléfono: ${s.telefono}\nHorario: ${s.horario}\nServicios: ${s.servicios.join(', ')}`);
+                                navigate(`/funerales/${s.id}`, { state: { item: s } });
                             }}
                         />
                     ))}
