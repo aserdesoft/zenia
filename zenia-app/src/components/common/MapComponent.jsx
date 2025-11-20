@@ -49,8 +49,7 @@ export default function MapComponent({ latitude = 20.6596, longitude = -103.2497
 
   return (
     <div className="map-component">
-      <h3>Ubicación en el mapa</h3>
-      <div ref={mapContainer} style={{ height: '400px', width: '100%', borderRadius: '6px' }} />
+      <div ref={mapContainer} style={{ height: '600px', width: '100%', borderRadius: '6px' }} />
     </div>
   );
 }

@@ -1,48 +1,189 @@
-.place-details {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 16px;
+/* ---------------- CONTENEDOR PRINCIPAL ---------------- */
+.place-details-wrapper {
+    max-width: 1200px; 
+    margin: 0 auto;
+    padding: 30px 20px;
 }
 
-.place-details img {
-  border-radius: 6px;
-  margin: 12px 0;
+/* ---------------- HEADER SECTION ---------------- */
+.header-section {
+    padding-bottom: 20px;
 }
 
-.place-details .back-button {
-  background: none;
-  border: none;
-  color: #0366d6;
-  cursor: pointer;
-  padding: 8px 0;
+/* ---------------- BOTÓN VOLVER ---------------- */
+.btn-volver {
+    background-color: #1a1a1a; 
+    color: white; 
+    border: none; 
+    
+    padding: 0.75rem 1.75rem; 
+    font-size: 0.95rem; 
+    font-weight: 500;
+    border-radius: 6px; 
+    cursor: pointer;
+    text-decoration: none; 
+    
+    transition: all 0.3s ease;
+    display: inline-block; 
+    
+    margin-bottom: 25px; 
 }
 
-.place-details h1 {
-  margin: 16px 0;
-  font-size: 28px;
-  font-weight: 700;
-  color: #1a1a1a;
+.btn-volver:hover {
+    background-color: #333;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-.place-details p {
-  margin: 8px 0;
-  line-height: 1.6;
-  color: #333;
+.btn-volver:active {
+    transform: translateY(0); 
 }
 
-.place-details ul {
-  margin: 8px 0 0 20px;
-  line-height: 1.8;
+
+/* ---------------- MAIN INFO GRID (Dos Columnas) ---------------- */
+.main-info-grid {
+    display: flex;
+    gap: 60px; 
+    margin-bottom: 40px;
+    align-items: flex-start; 
 }
 
-.place-details li {
-  color: #555;
+.image-column {
+    flex: 1; 
+    max-width: 50%;
 }
 
-.place-details a {
-  transition: background-color 0.2s ease;
+.details-column {
+    flex: 1; 
+    padding-top: 10px;
 }
 
-.place-details a:hover {
-  background-color: #d33425 !important;
+/* Imagen destacada */
+.place-featured-image {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Título y Detalles */
+.place-title {
+    font-size: 2.5em; 
+    color: #333;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.detail-address, 
+.detail-phone, 
+.detail-schedule {
+    font-size: 1.1em;
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+.detail-address strong,
+.detail-phone strong,
+.detail-schedule strong {
+    color: #004d40;
+}
+
+/* Servicios */
+.section-subtitle {
+    font-size: 1.3em;
+    color: #333;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.services-list {
+    list-style: disc;
+    margin-left: 25px;
+    padding: 5px 0;
+}
+
+/* ---------------- BOTÓN DE GOOGLE MAPS ---------------- */
+.btn-google-maps {
+    align-self: flex-start;
+    display: inline-block;
+    
+    background-color: #1a1a1a;
+    color: white;
+    border: none;
+    
+    padding: 0.75rem 1.75rem; 
+    font-size: 0.95rem; 
+    font-weight: 500;
+    border-radius: 6px; 
+    cursor: pointer;
+    text-decoration: none; 
+    
+    transition: all 0.3s ease;
+    
+    margin-top: 30px; 
+}
+
+.btn-google-maps:hover {
+    background-color: #333;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.btn-google-maps:active {
+    transform: translateY(0); 
+}
+
+/* ---------------- MAP SECTION ---------------- */
+.map-zone-section {
+    padding: 30px 0;
+    margin-top: 30px;
+    margin-bottom: 100px; /* ESPACIO FINAL DE 200PX DEBAJO DEL MAPA */
+}
+
+.map-title {
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.map-embed-container {
+    width: 100%;
+    height: 600px; 
+    overflow: hidden; 
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* ---------------- RESPONSIVE ---------------- */
+@media (max-width: 968px) {
+    .main-info-grid {
+        gap: 30px; 
+    }
+    .image-column, .details-column {
+        padding: 0 10px;
+    }
+    
+    .map-embed-container {
+        height: 500px; 
+    }
+}
+
+@media (max-width: 768px) {
+    .main-info-grid {
+    flex-direction: column;
+    gap: 20px; 
+    }
+    .image-column, .details-column {
+    max-width: 100%;
+            padding: 0;
+    }
+        .place-title {
+            font-size: 2em;
+        }
+        .map-embed-container {
+            height: 350px; 
+        }
 }
