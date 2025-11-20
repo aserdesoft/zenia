@@ -16,3 +16,33 @@
   cursor: pointer;
   padding: 8px 0;
 }
+
+.place-details h1 {
+  margin: 16px 0;
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.place-details p {
+  margin: 8px 0;
+  line-height: 1.6;
+  color: #333;
+}
+
+.place-details ul {
+  margin: 8px 0 0 20px;
+  line-height: 1.8;
+}
+
+.place-details li {
+  color: #555;
+}
+
+.place-details a {
+  transition: background-color 0.2s ease;
+}
+
+.place-details a:hover {
+  background-color: #d33425 !important;
+}

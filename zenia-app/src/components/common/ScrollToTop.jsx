@@ -8,7 +8,7 @@ function ScrollToTop({ behavior = 'smooth' }) {
         // Desplaza al inicio cada vez que cambia la ruta
         try {
             window.scrollTo({ top: 0, left: 0, behavior });
-        } catch (_) {
+        } catch {
             // Fallback para navegadores antiguos
             window.scrollTo(0, 0);
         }
