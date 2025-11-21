@@ -8,6 +8,18 @@ import './styles/Entertainment.css';
 import { useNavigate } from 'react-router-dom';
 import entertainmentData from '../data/entertainmentData';
 
+// Añadir los siguientes dos bloques a cada archivo de categoria
+// bundle entertainment images so we can map by id (filename)
+const entertainmentImages = import.meta.glob('../assets/entertainmentImages/*.{jpg,png,jpeg,webp}', { eager: true, as: 'url' });
+
+// build a lookup map filename (without ext) -> url
+const entertainmentImagesMap = {};
+for (const p in entertainmentImages) {
+    const filename = p.split('/').pop();
+    const name = filename.split('.').shift();
+    entertainmentImagesMap[name] = entertainmentImages[p];
+}
+
 function Entertainment() {
     const [searchTerm, setSearchTerm] = useState('');
     const [isSearching, setIsSearching] = useState(false);
@@ -69,7 +81,8 @@ function Entertainment() {
                             key={p.id}
                             title={p.nombre}
                             description={`${p.direccion} • ${p.telefono} • ${p.horario}`}
-                            image={entertainmentImg}
+                            // modificar esta linea para cada categoria
+                            image={entertainmentImagesMap[String(p.id)] || entertainmentImg}
                             onDetailsClick={() => {
                                 navigate(`/esparcimiento/${p.id}`, { state: { item: p } });
                             }}

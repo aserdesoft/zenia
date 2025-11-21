@@ -13,6 +13,10 @@ import entertainmentImg from '../assets/esparcimientoGen.jpeg';
 import documentationImg from '../assets/docuGeneric.jpg';
 import funeralsImg from '../assets/funeralesGeneric.jpg';
 
+// Bundle entertainment images so we can reference them by id (filename)
+// Se debe importar para cada categoria
+const entertainmentImages = import.meta.glob('../assets/entertainmentImages/*.jpg', { eager: true, as: 'url' });
+
 const dataMap = {
   farmacias: { data: farmaciesData, image: farmaciesImg, title: 'Farmacias' },
   comida: { data: foodData, image: foodImg, title: 'Comida' },
@@ -58,6 +62,21 @@ export default function PlaceDetails() {
     );
   }
 
+  // Determine which image to show
+  // Aqui se implementa la logica para buscar la imagen especifica para cada categoria
+  // Añadir la logica para cada categoria
+  let imageSrc = img;
+  if (category === 'esparcimiento' && item) {
+    for (const p in entertainmentImages) {
+      const filename = p.split('/').pop();
+      const name = filename.split('.').shift();
+      if (String(name) === String(item.id)) {
+        imageSrc = entertainmentImages[p];
+        break;
+      }
+    }
+  }
+
   return (
     <div className="place-details-wrapper">
         
@@ -76,8 +95,8 @@ export default function PlaceDetails() {
             
             {/* COLUMNA IZQUIERDA: IMAGEN */}
             <div className="image-column">
-                {/* La clase place-featured-image reemplaza el estilo en línea de la imagen */}
-                {img && <img src={img} alt={item.nombre} className="place-featured-image" />}
+              {/* La clase place-featured-image reemplaza el estilo en línea de la imagen */}
+              {imageSrc && <img src={imageSrc} alt={item.nombre} className="place-featured-image" />}
             </div>
             
             {/* COLUMNA DERECHA: INFORMACIÓN DETALLADA */}
