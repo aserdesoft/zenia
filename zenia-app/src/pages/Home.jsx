@@ -5,7 +5,7 @@ import farmaciaImg from "../assets/farmaciaGeneric.jpg";
 import comidaImg from "../assets/comidaGeneric.jpg";
 import docuImg from "../assets/docuGeneric.jpg";
 import funeralesImg from "../assets/funeralesGeneric.jpg";
-import entImg from "../assets/esparcimientoGen.jpeg";
+import entImg from "../assets/esparcimientoGen.jpg";
 import HeroSection from '../components/common/HeroSection.jsx';
 import heroImg from "../assets/heroSection.jpg";
 function Home() {

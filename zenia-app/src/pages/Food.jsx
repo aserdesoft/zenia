@@ -8,6 +8,15 @@ import './styles/Food.css';
 import { useNavigate } from 'react-router-dom';
 import foodData from '../data/foodData';
 
+const foodImages = import.meta.glob('../assets/foodImages/*.{jpg,png,jpeg,webp}', { eager: true, as: 'url' });
+
+const foodImagesMap = {};
+for (const p in foodImages) {
+    const filename = p.split('/').pop();
+    const name = filename.split('.').shift();
+    foodImagesMap[name] = foodImages[p];
+}
+
 function Food() {
     const [searchTerm, setSearchTerm] = useState('');
     const [isSearching, setIsSearching] = useState(false);
@@ -70,7 +79,7 @@ function Food() {
                             key={place.id}
                             title={place.nombre}
                             description={`${place.direccion} • ${place.telefono} • ${place.horario}`}
-                            image={foodImg}
+                            image={foodImagesMap[String(place.id)] || foodImg}
                             onDetailsClick={() => {
                                 navigate(`/comida/${place.id}`, { state: { item: place } });
                             }}

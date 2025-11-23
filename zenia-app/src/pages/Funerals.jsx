@@ -8,6 +8,15 @@ import './styles/Funerals.css';
 import { useNavigate } from 'react-router-dom';
 import funeralsData from '../data/funeralsData';
 
+const funeralsImages = import.meta.glob('../assets/funeralsImages/*.{jpg,png,jpeg,webp}', { eager: true, as: 'url' });
+
+const funeralsImagesMap = {};
+for (const p in funeralsImages) {
+    const filename = p.split('/').pop();
+    const name = filename.split('.').shift();
+    funeralsImagesMap[name] = funeralsImages[p];
+}
+
 function Funerals() {
     const [searchTerm, setSearchTerm] = useState('');
     const [isSearching, setIsSearching] = useState(false);
@@ -69,7 +78,7 @@ function Funerals() {
                             key={s.id}
                             title={s.nombre}
                             description={`${s.direccion} • ${s.telefono} • ${s.horario}`}
-                            image={funeralsImg}
+                            image={funeralsImagesMap[String(s.id)] || funeralsImg}
                             onDetailsClick={() => {
                                 navigate(`/funerales/${s.id}`, { state: { item: s } });
                             }}

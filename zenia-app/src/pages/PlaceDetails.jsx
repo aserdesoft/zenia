@@ -9,13 +9,17 @@ import MapComponent from '../components/common/MapComponent';
 import '../pages/styles/PlaceDetails.css';
 import farmaciesImg from '../assets/farmaciaGeneric.jpg';
 import foodImg from '../assets/comidaGeneric.jpg';
-import entertainmentImg from '../assets/esparcimientoGen.jpeg';
+import entertainmentImg from '../assets/esparcimientoGen.jpg';
 import documentationImg from '../assets/docuGeneric.jpg';
 import funeralsImg from '../assets/funeralesGeneric.jpg';
 
 // Bundle entertainment images so we can reference them by id (filename)
 // Se debe importar para cada categoria
 const entertainmentImages = import.meta.glob('../assets/entertainmentImages/*.jpg', { eager: true, as: 'url' });
+const foodImages = import.meta.glob('../assets/foodImages/*.{jpg,png,jpeg,webp}', { eager: true, as: 'url' });
+const funeralsImages = import.meta.glob('../assets/funeralsImages/*.{jpg,png,jpeg,webp}', { eager: true, as: 'url' });
+const documentationImages = import.meta.glob('../assets/documentationImages/*.{jpg,png,jpeg,webp}', { eager: true, as: 'url' });
+const farmaciesImages = import.meta.glob('../assets/farmaciesImages/*.{jpg,png,jpeg,webp}', { eager: true, as: 'url' });
 
 const dataMap = {
   farmacias: { data: farmaciesData, image: farmaciesImg, title: 'Farmacias' },
@@ -72,6 +76,42 @@ export default function PlaceDetails() {
       const name = filename.split('.').shift();
       if (String(name) === String(item.id)) {
         imageSrc = entertainmentImages[p];
+        break;
+      }
+    }
+  } else if (category === 'comida' && item) {
+    for (const p in foodImages) {
+      const filename = p.split('/').pop();
+      const name = filename.split('.').shift();
+      if (String(name) === String(item.id)) {
+        imageSrc = foodImages[p];
+        break;
+      }
+    }
+  } else if (category === 'funerales' && item) {
+    for (const p in funeralsImages) {
+      const filename = p.split('/').pop();
+      const name = filename.split('.').shift();
+      if (String(name) === String(item.id)) {
+        imageSrc = funeralsImages[p];
+        break;
+      }
+    }
+  } else if (category === 'documentacion' && item) {
+    for (const p in documentationImages) {
+      const filename = p.split('/').pop();
+      const name = filename.split('.').shift();
+      if (String(name) === String(item.id)) {
+        imageSrc = documentationImages[p];
+        break;
+      }
+    }
+  } else if (category === 'farmacias' && item) {
+    for (const p in farmaciesImages) {
+      const filename = p.split('/').pop();
+      const name = filename.split('.').shift();
+      if (String(name) === String(item.id)) {
+        imageSrc = farmaciesImages[p];
         break;
       }
     }
