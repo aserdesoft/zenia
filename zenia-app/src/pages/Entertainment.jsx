@@ -3,7 +3,7 @@ import HeroSection from '../components/common/HeroSection.jsx';
 import SearchBar from '../components/common/SearchBar.jsx';
 import Card from '../components/common/Card.jsx';
 import { useDebounce } from '../hooks/useDebounce.js';
-import entertainmentImg from '../assets/esparcimientoGen.jpeg';
+import entertainmentImg from '../assets/esparcimientoGen.jpg';
 import './styles/Entertainment.css';
 import { useNavigate } from 'react-router-dom';
 import entertainmentData from '../data/entertainmentData';

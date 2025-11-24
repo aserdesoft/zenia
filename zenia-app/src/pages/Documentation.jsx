@@ -8,6 +8,15 @@ import './styles/Documentation.css';
 import { useNavigate } from 'react-router-dom';
 import documentationData from '../data/documentationData';
 
+const documentationImages = import.meta.glob('../assets/documentationImages/*.{jpg,png,jpeg,webp}', { eager: true, as: 'url' });
+
+const documentationImagesMap = {};
+for (const p in documentationImages) {
+    const filename = p.split('/').pop();
+    const name = filename.split('.').shift();
+    documentationImagesMap[name] = documentationImages[p];
+}
+
 function Documentacion() {
     const [searchTerm, setSearchTerm] = useState('');
     const [isSearching, setIsSearching] = useState(false);
@@ -69,7 +78,7 @@ function Documentacion() {
                             key={o.id}
                             title={o.nombre}
                             description={`${o.direccion} • ${o.telefono} • ${o.horario}`}
-                            image={documentationImg}
+                            image={documentationImagesMap[String(o.id)] || documentationImg}
                             onDetailsClick={() => {
                                 navigate(`/documentacion/${o.id}`, { state: { item: o } });
                             }}

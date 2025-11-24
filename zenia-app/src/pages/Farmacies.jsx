@@ -8,6 +8,15 @@ import './styles/Farmacies.css';
 import { useNavigate } from 'react-router-dom';
 import farmaciesData from '../data/farmaciesData';
 
+const farmaciesImages = import.meta.glob('../assets/farmaciesImages/*.{jpg,png,jpeg,webp}', { eager: true, as: 'url' });
+
+const farmaciesImagesMap = {};
+for (const p in farmaciesImages) {
+    const filename = p.split('/').pop();
+    const name = filename.split('.').shift();
+    farmaciesImagesMap[name] = farmaciesImages[p];
+}
+
 function Farmacies() {
     // Estado para el término de búsqueda
     const [searchTerm, setSearchTerm] = useState('');
@@ -93,7 +102,7 @@ function Farmacies() {
                             key={farmacia.id}
                             title={farmacia.nombre}
                             description={`${farmacia.direccion} • ${farmacia.telefono} • ${farmacia.horario}`}
-                            image={farmaciesImg}
+                            image={farmaciesImagesMap[String(farmacia.id)] || farmaciesImg}
                             onDetailsClick={() => {
                                 navigate(`/farmacias/${farmacia.id}`, { state: { item: farmacia } });
                             }}
