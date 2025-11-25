@@ -12,6 +12,7 @@ import foodImg from '../assets/comidaGeneric.jpg';
 import entertainmentImg from '../assets/esparcimientoGen.jpg';
 import documentationImg from '../assets/docuGeneric.jpg';
 import funeralsImg from '../assets/funeralesGeneric.jpg';
+import { map } from 'leaflet';
 
 // Bundle entertainment images so we can reference them by id (filename)
 // Se debe importar para cada categoria
@@ -26,7 +27,7 @@ const dataMap = {
   comida: { data: foodData, image: foodImg, title: 'Comida' },
   esparcimiento: { data: entertainmentData, image: entertainmentImg, title: 'Esparcimiento' },
   documentacion: { data: documentationData, image: documentationImg, title: 'Documentación' },
-  funerales: { data: funeralsData, image: funeralsImg, title: 'Servicios funebres' }
+  funerales: { data: funeralsData, image: funeralsImg, title: 'Servicios fúnebres' }
 };
 
 export default function PlaceDetails() {
@@ -124,7 +125,28 @@ export default function PlaceDetails() {
         <div className="header-section">
             <button 
                 className="btn-volver" 
-                onClick={() => navigate(-1)}
+                onClick={() => {
+                  switch(mapEntry.title){
+                    case 'Farmacias':
+                      navigate("/farmacias")
+                    break;
+                    break;
+                    case 'Comida':
+                      navigate("/comida")
+                    break;
+                    break;
+                    case 'Servicios fúnebres':
+                      navigate("/funerales")
+                    break;
+                    case 'Documentación':
+                      navigate("/documentacion")
+                    break;
+                    case 'Esparcimiento':
+                      navigate("/esparcimiento")
+                    break;
+                    default:navigate("/")
+                  }
+                }}
             >
                 Volver a {mapEntry.title}
             </button>
@@ -165,7 +187,7 @@ export default function PlaceDetails() {
                         <h3 className="section-subtitle">Servicios Principales:</h3>
                         <ul className="services-list">
                             {item.servicios.map((s, i) => (
-                                <li key={i}>{s}</li>
+                                <li key={i} dangerouslySetInnerHTML={{ __html: s }} />
                             ))}
                         </ul>
                     </div>

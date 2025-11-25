@@ -105,6 +105,27 @@
     padding: 5px 0;
 }
 
+.services-list li {
+    margin-bottom: 8px;
+    line-height: 1.6;
+}
+
+.services-list a {
+    color: #0066cc;
+    text-decoration: underline;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.services-list a:hover {
+    color: #004499;
+    text-decoration: none;
+}
+
+.services-list a:visited {
+    color: #551a8b;
+}
+
 /* ---------------- BOTÓN DE GOOGLE MAPS ---------------- */
 .btn-google-maps {
     align-self: flex-start;
