@@ -57,7 +57,7 @@ function Home() {
             {/* Servicios fúnebres */}
             <ServiceCard
               title="Servicios fúnebres"
-              description="Te ofrece en que lugar se ocurre, durante y alguno servicio funerario para tu ser querido"
+              description="En caso de que ocurra, debes contar con algún servicio funerario para tu ser querido"
               image={funeralesImg}
               link="/funerales"
             />
